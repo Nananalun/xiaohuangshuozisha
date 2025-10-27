@@ -1,39 +1,44 @@
 <!DOCTYPE html>
 <html lang="zh">
 <head>
-  <!-- TikTok Pixel Code Start -->
-<script>
-!function (w, d, t) {
-  w.TiktokAnalyticsObject=t;var ttq=w[t]=w[t]||[];ttq.methods=["page","track","identify","instances","debug","on","off","once","ready","alias","group","enableCookie","disableCookie","holdConsent","revokeConsent","grantConsent"],ttq.setAndDefer=function(t,e){t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}};for(var i=0;i<ttq.methods.length;i++)ttq.setAndDefer(ttq,ttq.methods[i]);ttq.instance=function(t){for(
-var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n]);return e},ttq.load=function(e,n){var r="https://analytics.tiktok.com/i18n/pixel/events.js",o=n&&n.partner;ttq._i=ttq._i||{},ttq._i[e]=[],ttq._i[e]._u=r,ttq._t=ttq._t||{},ttq._t[e]=+new Date,ttq._o=ttq._o||{},ttq._o[e]=n||{};n=document.createElement("script")
-;n.type="text/javascript",n.async=!0,n.src=r+"?sdkid="+e+"&lib="+t;e=document.getElementsByTagName("script")[0];e.parentNode.insertBefore(n,e)};
-
-
-  ttq.load('D3VO1TBC77U816ESA880');
-  ttq.page();
-}(window, document, 'ttq');
-</script>
-<!-- TikTok Pixel Code End -->
-  <!-- Meta Pixel Code -->
-<script>
-!function(f,b,e,v,n,t,s)
-{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-n.queue=[];t=b.createElement(e);t.async=!0;
-t.src=v;s=b.getElementsByTagName(e)[0];
-s.parentNode.insertBefore(t,s)}(window, document,'script',
-'https://connect.facebook.net/en_US/fbevents.js');
-fbq('init', '662677220248083');
-fbq('track', 'PageView');
-</script>
-<noscript><img height="1" width="1" style="display:none"
-src="https://www.facebook.com/tr?id=662677220248083&ev=PageView&noscript=1"
-/></noscript>
-<!-- End Meta Pixel Code -->
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>小黄说紫砂｜带你领略真紫砂</title>
+
+  <!-- TikTok Pixel Code Start -->
+  <script>
+  !function (w, d, t) {
+    w.TiktokAnalyticsObject=t;var ttq=w[t]=w[t]||[];
+    ttq.methods=["page","track","identify","instances","debug","on","off","once","ready","alias","group","enableCookie","disableCookie","holdConsent","revokeConsent","grantConsent"];
+    ttq.setAndDefer=function(t,e){t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}};
+    for(var i=0;i<ttq.methods.length;i++)ttq.setAndDefer(ttq,ttq.methods[i]);
+    ttq.instance=function(t){for(var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n]);return e};
+    ttq.load=function(e,n){var r="https://analytics.tiktok.com/i18n/pixel/events.js",o=n&&n.partner;ttq._i=ttq._i||{},ttq._i[e]=[],ttq._i[e]._u=r,ttq._t=ttq._t||{},ttq._t[e]=+new Date,ttq._o=ttq._o||{},ttq._o[e]=n||{};n=document.createElement("script");n.type="text/javascript",n.async=!0,n.src=r+"?sdkid="+e+"&lib="+t;e=document.getElementsByTagName("script")[0];e.parentNode.insertBefore(n,e)};
+    ttq.load('D3VO1TBC77U816ESA880');
+    ttq.page();
+  }(window, document, 'ttq');
+  </script>
+  <!-- TikTok Pixel Code End -->
+
+  <!-- Meta Pixel Code -->
+  <script>
+  !function(f,b,e,v,n,t,s)
+  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+  n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];
+  s.parentNode.insertBefore(t,s)}(window, document,'script',
+  'https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init', '662677220248083');
+  fbq('track', 'PageView');
+  </script>
+  <noscript>
+    <img height="1" width="1" style="display:none"
+    src="https://www.facebook.com/tr?id=662677220248083&ev=PageView&noscript=1"/>
+  </noscript>
+  <!-- End Meta Pixel Code -->
+
   <style>
     body {
       font-family: "Microsoft YaHei", serif;
@@ -106,7 +111,30 @@ src="https://www.facebook.com/tr?id=662677220248083&ev=PageView&noscript=1"
     <p>紫砂，不只是茶具，更是一种生活的温度。</p>
     <p>从泥到壶，每一件作品都承载着匠人的呼吸与时间的痕迹。</p>
     <p>跟着小黄，一起感受手工紫砂的真韵，看懂每一把壶的灵魂。</p>
-    <a class="btn" href="https://zalo.me/0397131556" target="_blank">💬 立即联系我（Zalo）</a>
+    
+    <!-- 点击按钮绑定 Pixel 事件 -->
+    <a class="btn" id="zalo-btn" href="https://zalo.me/0397131556" target="_blank">💬 立即联系我（Zalo）</a>
+
+    <script>
+      document.getElementById("zalo-btn").addEventListener("click", function(e) {
+        e.preventDefault(); // 阻止立即跳转
+
+        // TikTok Pixel 上报
+        if (typeof ttq !== 'undefined') {
+          ttq.track('ClickButton'); // TikTok 转化事件名
+        }
+
+        // Meta Pixel 上报
+        if (typeof fbq !== 'undefined') {
+          fbq('track', 'Lead'); // Meta 转化事件名
+        }
+
+        // 延迟跳转，确保事件发送
+        setTimeout(() => {
+          window.location.href = "https://zalo.me/0397131556";
+        }, 300);
+      });
+    </script>
   </section>
 
   <footer>
@@ -114,7 +142,3 @@ src="https://www.facebook.com/tr?id=662677220248083&ev=PageView&noscript=1"
   </footer>
 </body>
 </html>
-
-
-
-
