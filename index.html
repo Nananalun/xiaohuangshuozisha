@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="zh">
+<html lang="vi">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>小黄说紫砂｜带你领略真紫砂</title>
+  <title>Xiao Huang Nói Về Tử Sa｜Khám Phá Tử Sa Thật</title>
 
   <!-- TikTok Pixel Code -->
   <script>
@@ -49,61 +49,48 @@
     .btn { display: inline-block; background-color: #8b5a2b; color: #fff; padding: 14px 28px; border-radius: 25px; text-decoration: none; font-size: 16px; transition: background 0.3s ease; margin: 30px 0; }
     .btn:hover { background-color: #704321; }
     footer { font-size: 13px; color: #a39586; padding: 30px 10px 40px; }
-    #debug-box { background: rgba(255,255,255,0.9); border: 1px solid #ccc; border-radius: 8px; padding: 10px; font-size: 13px; color: #333; margin: 20px auto; width: 90%; max-width: 400px; display: none; text-align:left; }
   </style>
 </head>
 <body>
   <header>
-    <h1>小黄说紫砂</h1>
-    <p class="subtitle">带你领略真紫砂</p>
+    <h1>Xiao Huang Nói Về Tử Sa</h1>
+    <p class="subtitle">Khám Phá Tử Sa Thật</p>
   </header>
 
   <div class="hero"></div>
 
   <section>
-    <p>紫砂，不只是茶具，更是一种生活的温度。</p>
-    <p>从泥到壶，每一件作品都承载着匠人的呼吸与时间的痕迹。</p>
-    <p>跟着小黄，一起感受手工紫砂的真韵，看懂每一把壶的灵魂。</p>
+    <p>Tử sa không chỉ là bộ ấm chén, mà còn là một phong cách sống đầy cảm xúc.</p>
+    <p>Từ đất sét đến ấm, mỗi tác phẩm đều chứa đựng hơi thở và dấu ấn thời gian của nghệ nhân.</p>
+    <p>Hãy cùng Xiao Huang cảm nhận vẻ đẹp thủ công của tử sa, và hiểu được linh hồn của từng chiếc ấm.</p>
     
-    <a class="btn" id="zalo-btn" href="https://zalo.me/0397131556" target="_blank">💬 立即联系我（Zalo）</a>
-
-    <div id="debug-box"></div>
+    <a class="btn" id="zalo-btn" href="https://zalo.me/0397131556" target="_blank">💬 Liên hệ ngay (Zalo)</a>
   </section>
 
   <footer>
-    © 小黄说紫砂 | 用心做好每一把壶
+    © Xiao Huang Nói Về Tử Sa | Tận tâm làm tốt từng chiếc ấm
   </footer>
 
   <script>
     window.addEventListener('load', function() {
       const zaloBtn = document.getElementById("zalo-btn");
-      const debugBox = document.getElementById("debug-box");
-      if(debugBox) debugBox.style.display = "block";
-      debugBox.innerHTML = "🔍 检测像素状态...<br>";
-
-      debugBox.innerHTML += window.ttq ? "✅ TikTok Pixel 已加载<br>" : "⚠️ TikTok Pixel 未加载<br>";
-      debugBox.innerHTML += window.fbq ? "✅ Meta Pixel 已加载<br>" : "⚠️ Meta Pixel 未加载<br>";
 
       zaloBtn.addEventListener("click", function(e) {
-        e.preventDefault(); // 阻止默认跳转
-        debugBox.innerHTML += "🟠 按钮被点击<br>";
+        e.preventDefault(); // Ngăn chặn chuyển trang mặc định
 
-        // 上报 TikTok Pixel
+        // TikTok Pixel báo sự kiện Contact
         if(window.ttq){
           ttq.track('Contact');
-          debugBox.innerHTML += "✅ TikTok 上报：Contact<br>";
-        } else debugBox.innerHTML += "❌ TikTok 未就绪<br>";
+        }
 
-        // 上报 Facebook Pixel
+        // Facebook Pixel báo sự kiện Contact
         if(window.fbq){
           fbq('track','Contact');
-          debugBox.innerHTML += "✅ Meta 上报：Contact<br>";
-        } else debugBox.innerHTML += "❌ Meta 未就绪<br>";
+        }
 
-        // 延迟 200ms 打开 Zalo 新窗口，保证 Pixel 上报成功
+        // Chờ 200ms trước khi mở Zalo để đảm bảo Pixel gửi xong
         setTimeout(() => {
           window.open(zaloBtn.href, '_blank');
-          debugBox.innerHTML += "🟢 已打开 Zalo 新窗口<br>";
         }, 200);
       });
     });
