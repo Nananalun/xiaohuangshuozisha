@@ -141,51 +141,52 @@
   </footer>
 
   <!-- 按钮事件代码 -->
-  <script>
-    window.addEventListener('load', function() {
-      const zaloBtn = document.getElementById("zalo-btn");
-      const debugBox = document.getElementById("debug-box");
-      debugBox.style.display = "block";
-      debugBox.innerHTML = "🔍 检测像素状态中...<br>";
+ <script>
+  window.addEventListener('load', function() {
+    const zaloBtn = document.getElementById("zalo-btn");
+    const debugBox = document.getElementById("debug-box");
+    debugBox.style.display = "block";
+    debugBox.innerHTML = "Detecting pixels...<br>";
 
-      // 检查像素加载状态
+    if (window.ttq) debugBox.innerHTML += "TikTok Pixel loaded<br>";
+    else debugBox.innerHTML += "TikTok Pixel NOT loaded<br>";
+
+    if (window.fbq) debugBox.innerHTML += "Meta Pixel loaded<br>";
+    else debugBox.innerHTML += "Meta Pixel NOT loaded<br>";
+
+    zaloBtn.addEventListener("click", function(e) {
+      e.preventDefault();
+      debugBox.innerHTML += "Button clicked<br>";
+
+      // === TikTok 事件（推荐用 Contact）===
       if (window.ttq) {
-        debugBox.innerHTML += "✅ TikTok Pixel 已加载<br>";
+        if (typeof ttq.ready === 'function') {
+          ttq.ready(() => {
+            ttq.track('Contact');
+            debugBox.innerHTML += "TikTok: Contact (via ready)<br>";
+          });
+        } else {
+          ttq.track('Contact');
+          debugBox.innerHTML += "TikTok: Contact (fallback)<br>";
+        }
       } else {
-        debugBox.innerHTML += "⚠️ TikTok Pixel 未加载<br>";
+        debugBox.innerHTML += "TikTok not ready<br>";
       }
 
+      // === Meta 事件（推荐用标准事件 Contact）===
       if (window.fbq) {
-        debugBox.innerHTML += "✅ Meta Pixel 已加载<br>";
+        fbq('track', 'Contact');
+        debugBox.innerHTML += "Meta: Contact<br>";
       } else {
-        debugBox.innerHTML += "⚠️ Meta Pixel 未加载<br>";
+        debugBox.innerHTML += "Meta not ready<br>";
       }
 
-      zaloBtn.addEventListener("click", function(e) {
-        e.preventDefault();
-        debugBox.innerHTML += "🟠 按钮被点击<br>";
-
-        // TikTok 像素事件
-        if (window.ttq && typeof ttq.track === 'function') {
-          ttq.track('ClickButton');
-          debugBox.innerHTML += "✅ TikTok 上报事件：ClickButton<br>";
-        } else {
-          debugBox.innerHTML += "❌ TikTok 像素未准备好<br>";
-        }
-
-        // Meta 像素事件
-        if (window.fbq && typeof fbq === 'function') {
-          fbq('trackCustom', 'ButtonClick');
-          debugBox.innerHTML += "✅ Meta 上报事件：ButtonClick<br>";
-        } else {
-          debugBox.innerHTML += "❌ Meta 像素未准备好<br>";
-        }
-
-        setTimeout(() => {
-          window.location.href = "https://zalo.me/0397131556";
-        }, 800);
-      });
+      // 跳转
+      setTimeout(() => {
+        window.location.href = "https://zalo.me/0397131556";
+      }, 800);
     });
-  </script>
+  });
+</script>
 </body>
 </html>
