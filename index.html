@@ -140,48 +140,51 @@
     © 小黄说紫砂 | 用心做好每一把壶
   </footer>
 
-  <!-- 按钮事件代码 -->
- <script>
+ <!-- 按钮事件代码（替换原 <script>） -->
+<script>
   window.addEventListener('load', function() {
     const zaloBtn = document.getElementById("zalo-btn");
     const debugBox = document.getElementById("debug-box");
     debugBox.style.display = "block";
-    debugBox.innerHTML = "Detecting pixels...<br>";
+    debugBox.innerHTML = "🔍 检测像素状态...<br>";
 
-    if (window.ttq) debugBox.innerHTML += "TikTok Pixel loaded<br>";
-    else debugBox.innerHTML += "TikTok Pixel NOT loaded<br>";
+    // 检查像素是否加载
+    if (window.ttq) debugBox.innerHTML += "✅ TikTok Pixel 已加载<br>";
+    else debugBox.innerHTML += "⚠️ TikTok Pixel 未加载<br>";
 
-    if (window.fbq) debugBox.innerHTML += "Meta Pixel loaded<br>";
-    else debugBox.innerHTML += "Meta Pixel NOT loaded<br>";
+    if (window.fbq) debugBox.innerHTML += "✅ Meta Pixel 已加载<br>";
+    else debugBox.innerHTML += "⚠️ Meta Pixel 未加载<br>";
 
+    // 按钮点击事件
     zaloBtn.addEventListener("click", function(e) {
       e.preventDefault();
-      debugBox.innerHTML += "Button clicked<br>";
+      debugBox.innerHTML += "🟠 按钮被点击<br>";
 
-      // === TikTok 事件（推荐用 Contact）===
+      // === 1. TikTok 事件：使用标准事件 Contact，并确保 ready ===
       if (window.ttq) {
         if (typeof ttq.ready === 'function') {
           ttq.ready(() => {
             ttq.track('Contact');
-            debugBox.innerHTML += "TikTok: Contact (via ready)<br>";
+            debugBox.innerHTML += "✅ TikTok 上报：Contact（ready）<br>";
           });
         } else {
+          // fallback
           ttq.track('Contact');
-          debugBox.innerHTML += "TikTok: Contact (fallback)<br>";
+          debugBox.innerHTML += "✅ TikTok 上报：Contact（fallback）<br>";
         }
       } else {
-        debugBox.innerHTML += "TikTok not ready<br>";
+        debugBox.innerHTML += "❌ TikTok 未就绪<br>";
       }
 
-      // === Meta 事件（推荐用标准事件 Contact）===
+      // === 2. Meta 事件：使用标准事件 Contact（权重高）===
       if (window.fbq) {
         fbq('track', 'Contact');
-        debugBox.innerHTML += "Meta: Contact<br>";
+        debugBox.innerHTML += "✅ Meta 上报：Contact<br>";
       } else {
-        debugBox.innerHTML += "Meta not ready<br>";
+        debugBox.innerHTML += "❌ Meta 未就绪<br>";
       }
 
-      // 跳转
+      // === 3. 延迟跳转，确保事件发送 ===
       setTimeout(() => {
         window.location.href = "https://zalo.me/0397131556";
       }, 800);
