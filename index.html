@@ -10,7 +10,7 @@
     !function(w,d,t){
       w.TiktokAnalyticsObject=t;var ttq=w[t]=w[t]||[];
       ttq.methods=["page","track","identify","instances","debug","on","off","once","ready","alias","group","enableCookie","disableCookie","holdConsent","revokeConsent","grantConsent"];
-      ttq.setAndDefer=function(t,e){t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}};
+      ttq.setAndDefer=function(t,e){t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}; 
       for(var i=0;i<ttq.methods.length;i++)ttq.setAndDefer(ttq,ttq.methods[i]);
       ttq.load=function(e,n){
         var r="https://analytics.tiktok.com/i18n/pixel/events.js";
@@ -78,30 +78,33 @@
     window.addEventListener('load', function() {
       const zaloBtn = document.getElementById("zalo-btn");
       const debugBox = document.getElementById("debug-box");
-      debugBox.style.display = "block";
+      if(debugBox) debugBox.style.display = "block";
       debugBox.innerHTML = "🔍 检测像素状态...<br>";
 
       debugBox.innerHTML += window.ttq ? "✅ TikTok Pixel 已加载<br>" : "⚠️ TikTok Pixel 未加载<br>";
       debugBox.innerHTML += window.fbq ? "✅ Meta Pixel 已加载<br>" : "⚠️ Meta Pixel 未加载<br>";
 
       zaloBtn.addEventListener("click", function(e) {
-        e.preventDefault();
+        e.preventDefault(); // 阻止默认跳转
         debugBox.innerHTML += "🟠 按钮被点击<br>";
 
         // 上报 TikTok Pixel
-        if (window.ttq) {
+        if(window.ttq){
           ttq.track('Contact');
           debugBox.innerHTML += "✅ TikTok 上报：Contact<br>";
         } else debugBox.innerHTML += "❌ TikTok 未就绪<br>";
 
-        // 上报 Meta Pixel
-        if (window.fbq) {
-          fbq('track', 'Contact');
+        // 上报 Facebook Pixel
+        if(window.fbq){
+          fbq('track','Contact');
           debugBox.innerHTML += "✅ Meta 上报：Contact<br>";
         } else debugBox.innerHTML += "❌ Meta 未就绪<br>";
 
-        // 使用新窗口打开 Zalo，确保 Pixel 上报成功
-        window.open(zaloBtn.href, '_blank');
+        // 延迟 200ms 打开 Zalo 新窗口，保证 Pixel 上报成功
+        setTimeout(() => {
+          window.open(zaloBtn.href, '_blank');
+          debugBox.innerHTML += "🟢 已打开 Zalo 新窗口<br>";
+        }, 200);
       });
     });
   </script>
