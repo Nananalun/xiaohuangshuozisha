@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Xiao Huang Nói Về Tử Sa｜Khám Phá Tử Sa Thật</title>
 
-  <!-- TikTok Pixel Code -->
+  <!-- TikTok Pixel -->
   <script>
     !function(w,d,t){
       w.TiktokAnalyticsObject=t;var ttq=w[t]=w[t]||[];
@@ -24,7 +24,7 @@
     }(window,document,'ttq');
   </script>
 
-  <!-- Meta Pixel Code -->
+  <!-- Facebook Pixel -->
   <script>
     !function(f,b,e,v,n,t,s){
       if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};
@@ -34,21 +34,68 @@
     fbq('init', '2223411138069290');
     fbq('track', 'PageView');
   </script>
-  <noscript>
-    <img height="1" width="1" style="display:none"
-         src="https://www.facebook.com/tr?id=662677220248083&ev=PageView&noscript=1"/>
-  </noscript>
 
   <style>
-    body { font-family: "Microsoft YaHei", serif; background-color: #f7f3ef; color: #3e2f25; margin: 0; padding: 0; text-align: center;}
-    header { padding: 60px 20px 30px; }
+    body {
+      font-family: "Microsoft YaHei", serif;
+      background-color: #f7f3ef;
+      color: #3e2f25;
+      margin: 0;
+      padding: 0;
+      text-align: center;
+    }
+    header { padding: 40px 20px 10px; }
     h1 { font-size: 26px; margin-bottom: 10px; letter-spacing: 1px; }
     p.subtitle { font-size: 16px; color: #7b6a5c; margin-top: 0; }
-    .hero { background-image: url('微信图片_20251027001207_704_48.jpg'); background-size: cover; background-position: center; height: 360px; border-radius: 12px; margin: 20px auto; width: 90%; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
-    section { padding: 20px; line-height: 1.8; font-size: 15px; max-width: 720px; margin: 0 auto; }
-    .btn { display: inline-block; background-color: #8b5a2b; color: #fff; padding: 14px 28px; border-radius: 25px; text-decoration: none; font-size: 16px; transition: background 0.3s ease; margin: 30px 0; }
+    .hero {
+      background-image: url('微信图片_20251027001207_704_48.jpg');
+      background-size: cover;
+      background-position: center;
+      height: 340px;
+      border-radius: 12px;
+      margin: 20px auto;
+      width: 90%;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      position: relative;
+      cursor: pointer;
+      transition: transform 0.2s ease;
+    }
+    .hero:hover { transform: scale(1.02); }
+    .cta-top {
+      position: absolute;
+      bottom: 15px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+    .btn {
+      display: inline-block;
+      background-color: #8b5a2b;
+      color: #fff;
+      padding: 14px 28px;
+      border-radius: 25px;
+      text-decoration: none;
+      font-size: 16px;
+      transition: background 0.3s ease;
+      margin: 10px 0;
+    }
     .btn:hover { background-color: #704321; }
-    footer { font-size: 13px; color: #a39586; padding: 30px 10px 40px; }
+    section {
+      padding: 20px;
+      line-height: 1.8;
+      font-size: 15px;
+      max-width: 720px;
+      margin: 0 auto;
+    }
+    .tip {
+      color: #8b5a2b;
+      font-weight: bold;
+      margin-top: 10px;
+    }
+    footer {
+      font-size: 13px;
+      color: #a39586;
+      padding: 30px 10px 40px;
+    }
   </style>
 </head>
 <body>
@@ -57,14 +104,20 @@
     <p class="subtitle">Khám Phá Tử Sa Thật</p>
   </header>
 
-  <div class="hero"></div>
+  <!-- 图片区域 -->
+  <div class="hero" id="hero-image">
+    <div class="cta-top">
+      <a class="btn" id="zalo-btn-top" href="https://zalo.me/0397131556" target="_blank">💬 Nhắn Zalo nhận ưu đãi</a>
+    </div>
+  </div>
 
   <section>
     <p>Tử sa không chỉ là bộ ấm chén, mà còn là một phong cách sống đầy cảm xúc.</p>
     <p>Từ đất sét đến ấm, mỗi tác phẩm đều chứa đựng hơi thở và dấu ấn thời gian của nghệ nhân.</p>
     <p>Hãy cùng Xiao Huang cảm nhận vẻ đẹp thủ công của tử sa, và hiểu được linh hồn của từng chiếc ấm.</p>
-    
-    <a class="btn" id="zalo-btn" href="https://zalo.me/0397131556" target="_blank">💬 Liên hệ ngay (Zalo)</a>
+    <p class="tip">👉 Nhắn Zalo để nhận tư vấn miễn phí và ưu đãi hôm nay!</p>
+
+    <a class="btn" id="zalo-btn-bottom" href="https://zalo.me/0397131556" target="_blank">💬 Liên hệ ngay (Zalo)</a>
   </section>
 
   <footer>
@@ -72,27 +125,24 @@
   </footer>
 
   <script>
-    window.addEventListener('load', function() {
-      const zaloBtn = document.getElementById("zalo-btn");
+    const zaloLink = "https://zalo.me/0397131556";
 
-      zaloBtn.addEventListener("click", function(e) {
-        e.preventDefault(); // Ngăn chặn chuyển trang mặc định
+    // 统一上报逻辑：触发 TikTok + Facebook Contact 事件
+    function trackAndOpen() {
+      if (window.ttq) ttq.track('Contact');
+      if (window.fbq) fbq('track', 'Contact');
+      setTimeout(() => window.open(zaloLink, '_blank'), 300);
+    }
 
-        // TikTok Pixel báo sự kiện Contact
-        if(window.ttq){
-          ttq.track('Contact');
-        }
-
-        // Facebook Pixel báo sự kiện Contact
-        if(window.fbq){
-          fbq('track','Contact');
-        }
-
-        // Chờ 200ms trước khi mở Zalo để đảm bảo Pixel gửi xong
-        setTimeout(() => {
-          window.open(zaloBtn.href, '_blank');
-        }, 200);
-      });
+    // 给按钮和图片都绑定点击事件
+    ['zalo-btn-top', 'zalo-btn-bottom', 'hero-image'].forEach(id => {
+      const el = document.getElementById(id);
+      if (el) {
+        el.addEventListener('click', e => {
+          e.preventDefault();
+          trackAndOpen();
+        });
+      }
     });
   </script>
 </body>
